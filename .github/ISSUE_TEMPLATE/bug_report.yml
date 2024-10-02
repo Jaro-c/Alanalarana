@@ -1,7 +1,10 @@
 name: "Page Issue Report"
+description: "Use this form to report issues encountered while browsing alanalarana.com. Provide detailed information to help us resolve the issue quickly."
 title: "[Page Issue] Briefly describe the issue"
-labels: "bug, needs-triage"
-assignees: "Jaro-c"
+labels: 
+  - "bug"
+assignees:
+  - "Jaro-c"
 
 body:
   - type: markdown
