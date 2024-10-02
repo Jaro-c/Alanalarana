@@ -1,0 +1,83 @@
+name: "Page Issue Report"
+about: "Use this template to report any issues you encounter while browsing alanalarana.com."
+title: "[Page Issue] Briefly describe the issue"
+labels: "bug, needs-triage"
+assignees: "Jaro-c"
+
+body:
+  - type: markdown
+    attributes:
+      value: "## Page Issue Report"
+  
+  - type: input
+    id: page-url
+    attributes:
+      label: "Page URL"
+      description: "Provide the URL of the page on alanalarana.com where you encountered the issue."
+      placeholder: "https://alanalarana.com"
+    validations:
+      required: true
+  
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: "Issue Description"
+      description: "Briefly describe the issue you encountered on the page."
+      placeholder: "The 'About Us' section is missing text."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: "Steps to Reproduce"
+      description: "List the steps you took before encountering the issue."
+      placeholder: |
+        1. Visit 'https://alanalarana.com'
+        2. Navigate to 'About Us'
+        3. The text doesn't load properly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "Expected Behavior"
+      description: "Describe what you expected to happen when navigating the page."
+      placeholder: "The 'About Us' section should display the full text."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: "Actual Behavior"
+      description: "Describe what actually happened when you encountered the issue."
+      placeholder: "The section appears blank, with no text visible."
+    validations:
+      required: true
+
+  - type: input
+    id: browser-used
+    attributes:
+      label: "Browser Used"
+      description: "Specify which browser and version you were using (e.g., Chrome 96, Safari 15)."
+      placeholder: "Chrome 96"
+    validations:
+      required: true
+
+  - type: input
+    id: device-used
+    attributes:
+      label: "Device Used"
+      description: "Specify the device on which you encountered the issue (e.g., Desktop, iPhone 12)."
+      placeholder: "Desktop"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Additional Information"
+      description: "Provide any other relevant details, such as screenshots or additional context."
+      placeholder: "Attached a screenshot of the issue."
