@@ -1,0 +1,53 @@
+name: "Feature Request"
+description: "Use this form to request new features or improvements for alanalarana.com."
+title: "[Feature Request] Briefly describe the new feature"
+labels: 
+  - "enhancement"
+assignees:
+  - "Jaro-c"
+
+body:
+  - type: markdown
+    attributes:
+      value: "## Feature Request"
+
+  - type: input
+    id: feature-summary
+    attributes:
+      label: "Feature Summary"
+      description: "Provide a brief summary of the feature you're requesting."
+      placeholder: "Add a dark mode toggle for better night-time browsing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "Feature Description"
+      description: "Describe the feature or improvement in more detail."
+      placeholder: "The dark mode toggle should switch the website's background to dark colors and make the text light-colored for easier reading at night."
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefit
+    attributes:
+      label: "Benefit"
+      description: "Explain how this feature would benefit the users of alanalarana.com."
+      placeholder: "This feature will reduce eye strain for users who browse the website at night."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives"
+      description: "If you've considered other approaches to this feature, describe them here."
+      placeholder: "Another option could be to adjust the brightness or add a night reading mode."
+  
+  - type: input
+    id: additional-context
+    attributes:
+      label: "Additional Context"
+      description: "Any other relevant information that might help us understand your feature request."
+      placeholder: "Attached a mockup of the proposed feature."
