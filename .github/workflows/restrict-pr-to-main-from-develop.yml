@@ -1,22 +1,22 @@
 name: Restrict PR to Main from Develop Only
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - edited
+    pull_request:
+        branches:
+            - main
+        types:
+            - opened
+            - reopened
+            - synchronize
+            - edited
 
 jobs:
-  check-branch:
-    runs-on: ubuntu-latest
+    check-branch:
+        runs-on: ubuntu-latest
 
-    steps:
-    - name: Check if target branch is main and head branch is develop
-      if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref != 'develop'
-      run: |
-        echo "Pull requests to main are only allowed from develop."
-        exit 1
+        steps:
+            - name: Check if target branch is main and head branch is develop
+              if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref != 'develop'
+              run: |
+                  echo "Pull requests to main are only allowed from develop."
+                  exit 1
