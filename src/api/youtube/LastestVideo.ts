@@ -43,11 +43,9 @@ async function fetchValidVideo() {
 	const Url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&type=video&order=date&playlistId=${PlaylistId}&key=${API_KEY}`;
 
 	try {
-		const response = await fetch(Url, {
-			next: { revalidate: 10 * 60 }, // 10 minutes
-		});
-
+		const response = await fetch(Url, { next: { revalidate: 10 * 60 } }); // 10 minutes
 		const data = await response.json();
+
 		if (data?.items.length) {
 			for (const item of data.items) {
 				const video = item.snippet;
