@@ -3,9 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev -p 3150",
 		"build": "next build",
-		"start": "next start",
+		"start": "next start -p 3150",
 		"lint": "eslint . --ext .ts,.tsx,.js,.jsx",
 		"lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
 		"format": "prettier --check .",
@@ -13,6 +13,7 @@
 		"lint-and-format": "npm run lint && npm run format:fix"
 	},
 	"dependencies": {
+		"lucide-react": "^0.447.0",
 		"next": "^14.2.14",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
