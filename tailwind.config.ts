@@ -5,11 +5,25 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				background: "var(--background)",
-				foreground: "var(--foreground)",
+				primary: "",
+				secondary: "",
+			},
+			screens: {
+				"3xl": "1920px",
+				"4xl": "2560px",
+			},
+			container: {
+				center: true,
+				padding: {
+					DEFAULT: "1rem",
+				},
+				screens: {
+					"3xl": "1920px",
+				},
 			},
 		},
 	},
 	plugins: [],
 };
+
 export default config;
