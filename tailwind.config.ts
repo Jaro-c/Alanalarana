@@ -32,6 +32,10 @@ const config: Config = {
 					950: "#2c2b3b",
 				},
 				red: "#FF0000",
+				gray: {
+					light: "#D9D9D9",
+					dark: "#737373",
+				},
 			},
 			screens: {
 				"3xl": "1920px",
