@@ -73,7 +73,7 @@ async function checkRedirects(videoID: string) {
 	const shortUrl = `https://www.youtube.com/shorts/${videoID}`;
 
 	try {
-		const response = await fetch(shortUrl, { redirect: "manual" });
+		const response = await fetch(shortUrl, { redirect: "manual", next: { revalidate: 6 * 60 * 60 } }); // 6 hours
 		return response.status >= 300 && response.status < 400;
 	} catch {
 		return false;
