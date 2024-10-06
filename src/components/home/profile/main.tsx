@@ -7,6 +7,7 @@ const Contact = dynamic(() => import("./contact"));
 export default function Profile() {
 	const Title = process.env.PG_H_Title;
 	const Description = process.env.PG_H_Description;
+	const Email = process.env.PG_H_Mail as string;
 
 	const Title_Raniza = process.env.PG_R_Title;
 
@@ -29,7 +30,7 @@ export default function Profile() {
 				</div>
 			</div>
 
-			<Contact />
+			<Contact email={Email} />
 		</div>
 	);
 }

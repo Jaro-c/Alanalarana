@@ -1,8 +1,10 @@
 import { Mail } from "lucide-react";
 
-export default function Contact() {
-	const email = process.env.PG_H_Mail;
+interface ContactProps {
+	email: string;
+}
 
+export default function Contact({ email }: ContactProps) {
 	return (
 		<a className="flex w-full justify-center" href={"mailto:" + email}>
 			<button className="button-style button-transition group h-14 w-full rounded-full hover:bg-primary-600 hover:shadow-[0px_0px_15px_1px_#09de79] md:w-[90%] hover:md:scale-105 lg:w-2/3 xl:w-1/2">
