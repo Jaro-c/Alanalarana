@@ -32,7 +32,6 @@ export const metadata: Metadata = {
 			"max-snippet": -1,
 		},
 	},
-	manifest: "/manifest.webmanifest",
 };
 
 /* Font */
