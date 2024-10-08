@@ -13,7 +13,7 @@
 		"lint-and-format": "npm run lint && npm run format:fix"
 	},
 	"dependencies": {
-		"lucide-react": "^0.447.0",
+		"lucide-react": "^0.451.0",
 		"next": "^14.2.14",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
