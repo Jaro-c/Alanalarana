@@ -14,7 +14,7 @@ export default function Raniza() {
 				{/* Raniza */}
 				<div className="container my-4 flex h-full flex-col items-center justify-center max-lg:space-y-4 lg:flex-row">
 					{/* Raniza: Profile */}
-					<div className="size-full lg:w-1/2">
+					<div className="w-full lg:w-1/2">
 						<Suspense>
 							<Profile />
 						</Suspense>

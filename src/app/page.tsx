@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 const Profile = dynamic(() => import("@/components/home/profile/main"));
 const SocialMedia = dynamic(() => import("@/components/home/socials/main"));
 
-const Developers = dynamic(() => import("@/components/home/developers"));
+const Developers = dynamic(() => import("@/components/developers"));
 
 export default function Home() {
 	return (
@@ -15,7 +15,7 @@ export default function Home() {
 				{/* Alanalarana */}
 				<div className="container my-4 flex h-full flex-col items-center justify-center max-lg:space-y-4 lg:flex-row">
 					{/* Alana: Profile */}
-					<div className="size-full lg:w-1/2">
+					<div className="w-full lg:w-1/2">
 						<Suspense>
 							<Profile />
 						</Suspense>
