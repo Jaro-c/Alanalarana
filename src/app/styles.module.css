@@ -1,0 +1,22 @@
+.background-section {
+	position: relative;
+	background-color: #000;
+	background-image: url("/home/background.webp");
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.background-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(8px);
+	z-index: -1;
+}

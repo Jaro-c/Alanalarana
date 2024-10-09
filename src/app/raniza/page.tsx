@@ -1,32 +1,44 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+export const metadata: Metadata = {
+	title: process.env.MD_R_Title,
+	description: process.env.MD_R_Description,
+	keywords: process.env.MD_R_Keywords,
+	alternates: {
+		canonical: "/raniza",
+	},
+	category: "Club Deportivo",
+	openGraph: {
+		title: process.env.MD_R_Title,
+		description: process.env.MD_R_Description,
+		url: "/raniza",
+	},
+};
 
 import styles from "./styles.module.css";
 
-const Profile = dynamic(() => import("@/components/home/profile/main"));
-const SocialMedia = dynamic(() => import("@/components/home/socials/main"));
+const Profile = dynamic(() => import("@/components/raniza/profile/main"));
 
 const Developers = dynamic(() => import("@/components/developers"));
 
-export default function Home() {
+export default function Raniza() {
 	return (
 		<div className={`${styles["background-section"]} h-full`}>
 			<div className="container h-full py-4">
 				<div className="flex size-full flex-col items-center justify-center py-4">
-					{/* Alanalarana */}
+					{/* Raniza */}
 					<div className="flex size-full flex-col items-center justify-start max-lg:space-y-4 lg:flex-row lg:justify-center">
-						{/* Alana: Profile */}
+						{/* Raniza: Profile */}
 						<section className="w-full lg:w-1/2">
 							<Suspense>
 								<Profile />
 							</Suspense>
 						</section>
 
-						{/* Alana: Socials */}
+						{/* Raniza: Socials */}
 						<section className="flex size-full items-start justify-center lg:w-1/2 lg:items-center">
-							<Suspense>
-								<SocialMedia />
-							</Suspense>
+							<Suspense></Suspense>
 						</section>
 					</div>
 
