@@ -7,12 +7,16 @@ export const metadata: Metadata = {
 		default: process.env.MD_Title as string,
 	},
 	description: process.env.MD_Description,
+	keywords: process.env.MD_Keywords,
 	alternates: {
 		canonical: "/",
 	},
 	category: "Creador de Contenido",
 	openGraph: {
-		title: process.env.MD_Title,
+		title: {
+			template: "%s | " + (process.env.MD_Title as string),
+			default: process.env.MD_Title as string,
+		},
 		description: process.env.MD_Description,
 		url: process.env.MD_URL,
 		siteName: process.env.MD_Title,

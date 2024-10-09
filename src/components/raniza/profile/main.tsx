@@ -12,7 +12,7 @@ export default function Profile() {
 	const Title_Alanalarana = process.env.PG_H_Title;
 
 	return (
-		<div className="flex h-full flex-col items-center justify-center space-y-4">
+		<div className="flex size-full flex-col items-center justify-center space-y-4">
 			<div className="flex w-full flex-col items-center space-y-4">
 				<div className="relative flex items-center justify-center">
 					<Image className="no-select h-auto w-36 rounded-full lg:w-40" src={"/raniza/profile.webp"} width={150} height={150} alt={Title + " - Logo"} />

@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+export const metadata: Metadata = {
+	title: process.env.MD_R_Title,
+	description: process.env.MD_R_Description,
+	keywords: process.env.MD_R_Keywords,
+	alternates: {
+		canonical: "/raniza",
+	},
+	category: "Club Deportivo",
+	openGraph: {
+		title: process.env.MD_R_Title,
+		description: process.env.MD_R_Description,
+		url: "/raniza",
+	},
+};
 
 import styles from "./styles.module.css";
 
@@ -10,24 +25,26 @@ const Developers = dynamic(() => import("@/components/developers"));
 export default function Raniza() {
 	return (
 		<div className={`${styles["background-section"]} h-full`}>
-			<div className="flex h-full flex-col py-4">
-				{/* Raniza */}
-				<div className="container my-4 flex h-full flex-col items-center justify-center max-lg:space-y-4 lg:flex-row">
-					{/* Raniza: Profile */}
-					<div className="w-full lg:w-1/2">
-						<Suspense>
-							<Profile />
-						</Suspense>
+			<div className="container h-full py-4">
+				<div className="flex size-full flex-col items-center justify-center py-4">
+					{/* Raniza */}
+					<div className="flex size-full flex-col items-center justify-start max-lg:space-y-4 lg:flex-row lg:justify-center">
+						{/* Raniza: Profile */}
+						<section className="w-full lg:w-1/2">
+							<Suspense>
+								<Profile />
+							</Suspense>
+						</section>
+
+						{/* Raniza: Socials */}
+						<section className="flex size-full items-start justify-center lg:w-1/2 lg:items-center">
+							<Suspense></Suspense>
+						</section>
 					</div>
 
-					{/* Raniza: Socials */}
-					<div className="size-full lg:w-1/2">
-						<Suspense></Suspense>
-					</div>
+					{/* Developers */}
+					<Developers />
 				</div>
-
-				{/* Developers */}
-				<Developers />
 			</div>
 		</div>
 	);
