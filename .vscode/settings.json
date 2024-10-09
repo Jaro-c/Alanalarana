@@ -11,7 +11,7 @@
 	"prettier.arrowParens": "avoid",
 	"prettier.jsxSingleQuote": false,
 	"prettier.bracketSpacing": true,
-	"prettier.endOfLine": "crlf",
+	"prettier.endOfLine": "lf",
 	"prettier.printWidth": 200,
 	"prettier.bracketSameLine": false,
 	"prettier.insertPragma": false,
