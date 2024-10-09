@@ -9,6 +9,7 @@ interface VideoProps {
 		id: string;
 		createdAt: string;
 		title: string;
+		image: string;
 	};
 	channel: {
 		title: string;
@@ -49,15 +50,22 @@ async function fetchValidVideo() {
 		if (data?.items.length) {
 			for (const item of data.items) {
 				const video = item.snippet;
-				const isRedirect = await checkRedirects(video.resourceId.videoId);
 
-				if (isRedirect) {
-					return { video: { createdAt: video.publishedAt, title: video.title, id: video.resourceId.videoId }, channel: { title: video.channelTitle } };
+				const isRedirect = await checkRedirects(video.resourceId.videoId);
+				if (!isRedirect) {
+					continue;
 				}
+
+				const thumbnails = Object.keys(video.thumbnails).pop();
+				const thumbnail = video.thumbnails[thumbnails as string];
+
+				return { video: { createdAt: video.publishedAt, title: video.title, id: video.resourceId.videoId, image: thumbnail.url }, channel: { title: video.channelTitle } };
 			}
 
 			const video = data.items[0].snippet;
-			return { video: { createdAt: video.publishedAt, title: video.title, id: video.resourceId.videoId }, channel: { title: video.channelTitle } };
+			const thumbnails = Object.keys(video.thumbnails).pop();
+			const thumbnail = video.thumbnails[thumbnails as string];
+			return { video: { createdAt: video.publishedAt, title: video.title, id: video.resourceId.videoId, image: thumbnail.url }, channel: { title: video.channelTitle } };
 		}
 
 		return null;
@@ -73,7 +81,7 @@ async function checkRedirects(videoID: string) {
 	const shortUrl = `https://www.youtube.com/shorts/${videoID}`;
 
 	try {
-		const response = await fetch(shortUrl, { redirect: "manual" });
+		const response = await fetch(shortUrl, { redirect: "manual", next: { revalidate: 6 * 60 * 60 } }); // 6 hours
 		return response.status >= 300 && response.status < 400;
 	} catch {
 		return false;

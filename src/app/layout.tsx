@@ -7,12 +7,16 @@ export const metadata: Metadata = {
 		default: process.env.MD_Title as string,
 	},
 	description: process.env.MD_Description,
+	keywords: process.env.MD_Keywords,
 	alternates: {
 		canonical: "/",
 	},
 	category: "Creador de Contenido",
 	openGraph: {
-		title: process.env.MD_Title,
+		title: {
+			template: "%s | " + (process.env.MD_Title as string),
+			default: process.env.MD_Title as string,
+		},
 		description: process.env.MD_Description,
 		url: process.env.MD_URL,
 		siteName: process.env.MD_Title,
@@ -44,8 +48,8 @@ import "./globals.css";
 export default function Root_Layout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="es">
-			<body className={`${poppins.className} flex min-h-screen antialiased`}>
-				<main className="grow">{children}</main>
+			<body className={`${poppins.className} antialiased`}>
+				<main className="h-screen">{children}</main>
 			</body>
 		</html>
 	);
