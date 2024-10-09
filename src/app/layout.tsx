@@ -44,8 +44,8 @@ import "./globals.css";
 export default function Root_Layout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="es">
-			<body className={`${poppins.className} flex min-h-screen antialiased`}>
-				<main className="grow">{children}</main>
+			<body className={`${poppins.className} antialiased`}>
+				<main className="h-screen">{children}</main>
 			</body>
 		</html>
 	);
