@@ -15,7 +15,7 @@ export default function Video({ id, title, image, newVideo }: VideoProps) {
 			<span className="select-none truncate text-sm text-secondary-200/90 lg:text-base">{title}</span>
 
 			<div className="relative w-full">
-				<Image className="no-select h-auto w-full rounded-lg" src={image} alt={title + " Video"} width={400} height={400} />
+				<Image className="no-select h-auto w-full rounded-lg" src={image} alt={title} width={400} height={400} />
 
 				{newVideo && (
 					<div className="absolute bottom-4 right-4 animate-pulse rounded-full bg-red px-2 py-0.5">
