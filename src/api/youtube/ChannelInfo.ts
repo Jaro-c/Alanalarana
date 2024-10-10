@@ -7,7 +7,7 @@ export default async function ChannelInfo() {
 	const Url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ChannelID}&key=${API_KEY}`;
 
 	try {
-		const response = await fetch(Url, { next: { revalidate: 1 * 60 * 60 } }); // 1 hour
+		const response = await fetch(Url, { method: "GET", next: { revalidate: 1 * 60 * 60 } }); // 1 hour
 		const data = await response.json();
 
 		if (data?.items.length) {
