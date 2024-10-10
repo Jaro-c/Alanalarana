@@ -44,7 +44,7 @@ async function fetchValidVideo() {
 	const Url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&type=video&order=date&playlistId=${PlaylistId}&key=${API_KEY}`;
 
 	try {
-		const response = await fetch(Url, { next: { revalidate: 10 * 60 } }); // 10 minutes
+		const response = await fetch(Url, { method: "GET", next: { revalidate: 10 * 60 } }); // 10 minutes
 		const data = await response.json();
 
 		if (data?.items.length) {
@@ -81,7 +81,7 @@ async function checkRedirects(videoID: string) {
 	const shortUrl = `https://www.youtube.com/shorts/${videoID}`;
 
 	try {
-		const response = await fetch(shortUrl, { redirect: "manual", next: { revalidate: 6 * 60 * 60 } }); // 6 hours
+		const response = await fetch(shortUrl, { method: "GET", redirect: "manual", next: { revalidate: 6 * 60 * 60 } }); // 6 hours
 		return response.status >= 300 && response.status < 400;
 	} catch {
 		return false;

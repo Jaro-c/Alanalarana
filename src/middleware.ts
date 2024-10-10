@@ -13,29 +13,29 @@ export function middleware(request: NextRequest) {
 	const cspHeader = `
 		default-src 'self';
 		connect-src 'self';
-		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" && "'unsafe-eval'"};
-		script-src-elem 'self' 'nonce-${nonce}' 'strict-dynamic';
-		script-src-attr 'self' 'nonce-${nonce}' 'strict-dynamic';
+		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
+		script-src-attr 'self' 'nonce-${nonce}';
+		script-src-elem 'self' 'unsafe-inline';
 		style-src 'self' 'nonce-${nonce}';
-		style-src-elem 'self';
-		style-src-attr 'self';
+		style-src-elem 'self' 'nonce-${nonce}';
+		style-src-attr 'self' 'unsafe-inline';
 		img-src 'self' blob: data:;
 		font-src 'self';
 		object-src 'none';
-		base-uri 'none';
+		base-uri 'self';
 		form-action 'self';
 		frame-ancestors 'none';
 		upgrade-insecure-requests;`;
+	const ContentSecurityPolicy = cspHeader.replace(/\s{2,}/g, " ").trim();
 
-	/* Client - Headers */
+	/* Headers */
 	const requestHeaders = new Headers(request.headers);
 	requestHeaders.set("x-nonce", nonce);
-	requestHeaders.set("Content-Security-Policy", cspHeader.replace(/\s{2,}/g, " ").trim());
 
 	/* Server - Headers */
 	const response = NextResponse.next({ request: { headers: requestHeaders } });
 
-	response.headers.set("Content-Security-Policy", cspHeader.replace(/\s{2,}/g, " ").trim());
+	response.headers.set("Content-Security-Policy", ContentSecurityPolicy);
 	response.headers.set("X-Content-Type-Options", "nosniff");
 	response.headers.set("X-Frame-Options", "DENY");
 	response.headers.set("X-XSS-Protection", "1; mode=block");
@@ -51,5 +51,13 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ["/((?!api|_next/static|_next/image|favicon.ico|manifest.webmanifest|sitemap.xml|robots.txt).*)"],
+	matcher: [
+		{
+			source: "/((?!api|_next/static|_next/image|favicon.ico|manifest.webmanifest|sitemap.xml|robots.txt).*)",
+			missing: [
+				{ type: "header", key: "next-router-prefetch" },
+				{ type: "header", key: "purpose", value: "prefetch" },
+			],
+		},
+	],
 };

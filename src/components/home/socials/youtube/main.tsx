@@ -31,7 +31,7 @@ export default async function YouTube() {
 						<span className="button-followers">{subs}</span>
 					</div>
 
-					<button className="button-transition rounded-full bg-primary-600 px-3 py-1 hover:shadow-[0px_0px_10px_1px_#09de79]">
+					<button className="button-transition rounded-full bg-primary-600 px-2 py-0.5 hover:shadow-[0px_0px_10px_1px_#09de79] md:px-3 md:py-1">
 						<span className="select-none text-sm text-secondary-200 lg:text-base">Suscribirme</span>
 					</button>
 				</div>
