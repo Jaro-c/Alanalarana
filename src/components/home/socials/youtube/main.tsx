@@ -14,8 +14,8 @@ export default async function YouTube() {
 	const social = process.env.Social_YouTube;
 
 	return (
-		<a href={social} target="_blank" rel="noopener" className="size-full">
-			<div className="button-style button-transition flex w-full flex-col items-center justify-center space-y-4 rounded-2xl p-4">
+		<a href={social} target="_blank" rel="noopener">
+			<div className="button-style button-transition flex w-full flex-col items-center justify-center gap-4 rounded-2xl p-4">
 				{/* Channel Info */}
 				<div className="flex w-full items-center justify-between">
 					<div className="flex select-none items-center justify-center space-x-2">
