@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
 		short_name: process.env.MD_Short_Title,
 		description: process.env.MD_Description,
 		start_url: "/",
-		display: "standalone",
+		display: "fullscreen",
 		background_color: "#fff",
 		theme_color: "#fff",
 		icons: [
