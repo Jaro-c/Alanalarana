@@ -1,28 +1,28 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
+const Twitch = dynamic(() => import("@/components/home/socials/twitch/main"));
 const YouTube = dynamic(() => import("@/components/home/socials/youtube/main"));
 
 export default function Social_Media() {
-	const social_width = "w-full md:max-xl:w-[90%] xl:w-[80%] 2xl:w-[70%] button-transition md:hover:scale-105 md:hover:my-2";
+	const social_style = "w-full button-transition hover:my-2 hover:scale-105";
 
 	return (
-		<nav className="w-full lg:h-[90vh] xl:h-[80vh] 2xl:h-[90vh]">
-			<ul className="flex size-full flex-col items-center space-y-4">
-				{/* Social: Twitch */}
+		<nav className="w-full md:max-xl:w-[90%] lg:h-[90vh] xl:h-[80vh] xl:w-4/5 2xl:h-[90vh] 2xl:w-[70%]">
+			<ul className="flex size-full flex-col items-center gap-2">
+				{/* Twitch */}
+				<li className={social_style}>
+					<Suspense>
+						<Twitch />
+					</Suspense>
+				</li>
 
-				{/* Social: YouTube */}
-				<li className={social_width}>
+				{/* YouTube */}
+				<li className={`${social_style} hover:my-3`}>
 					<Suspense>
 						<YouTube />
 					</Suspense>
 				</li>
-
-				{/* Social: Instagram */}
-
-				{/* Social: TikTok */}
-				{/* Social: Discord */}
-				{/* Social: X/Twitter */}
 			</ul>
 		</nav>
 	);
