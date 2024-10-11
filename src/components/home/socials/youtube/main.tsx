@@ -1,5 +1,5 @@
+import millify from "millify";
 import dynamic from "next/dynamic";
-import numbro from "numbro";
 import { Suspense } from "react";
 
 import ChannelData from "@/api/youtube/ChannelInfo";
@@ -10,12 +10,12 @@ export default async function YouTube() {
 	const data = await ChannelData();
 	if (!data.status) return null;
 
-	const subs = numbro(Number(data.channel?.subscribers)).format({ average: true, mantissa: 2, trimMantissa: true });
+	const subs = millify(Number(data.channel?.subscribers), { precision: 2, locales: "es-ES" });
 	const social = process.env.Social_YouTube;
 
 	return (
-		<a href={social} target="_blank" rel="noopener" className="size-full">
-			<div className="button-style button-transition flex w-full flex-col items-center justify-center space-y-4 rounded-2xl p-4">
+		<a href={social} target="_blank" rel="noopener">
+			<div className="button-style button-transition flex w-full flex-col items-center justify-center gap-4 rounded-2xl p-4">
 				{/* Channel Info */}
 				<div className="flex w-full items-center justify-between">
 					<div className="flex select-none items-center justify-center space-x-2">
@@ -28,7 +28,7 @@ export default async function YouTube() {
 						<h2 className="button-title">{data.channel?.title}</h2>
 
 						{/* Subscribers */}
-						<span className="button-followers">{subs}</span>
+						{data.channel?.subscribers && <span className="button-followers">{subs}</span>}
 					</div>
 
 					<button className="button-transition rounded-full bg-primary-600 px-2 py-0.5 hover:shadow-[0px_0px_10px_1px_#09de79] md:px-3 md:py-1">
