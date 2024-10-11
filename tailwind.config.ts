@@ -35,6 +35,7 @@ const config: Config = {
 				gray: {
 					light: "#D9D9D9",
 					dark: "#737373",
+					darker: "#2C2C2E",
 				},
 			},
 			screens: {
