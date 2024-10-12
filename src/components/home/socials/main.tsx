@@ -28,7 +28,7 @@ export default function Social_Media() {
 				{/* Instagram */}
 				<li className={social_style}>
 					<Suspense>
-						<Instagram username={process.env.API_IG_Username as string} />
+						<Instagram username={process.env.API_IG_Username as string} social={process.env.Social_Instagram as string} />
 					</Suspense>
 				</li>
 			</ul>
