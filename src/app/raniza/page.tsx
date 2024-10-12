@@ -19,16 +19,17 @@ export const metadata: Metadata = {
 import styles from "./styles.module.css";
 
 const Profile = dynamic(() => import("@/components/raniza/profile/main"));
+const SocialMedia = dynamic(() => import("@/components/raniza/socials/main"));
 
 const Developers = dynamic(() => import("@/components/developers"));
 
 export default function Raniza() {
 	return (
-		<div className={`${styles["background-section"]} h-full`}>
+		<div className={`${styles["background-section"]} size-full`}>
 			<div className="container h-full py-4">
-				<div className="flex size-full flex-col items-center justify-center py-4">
+				<div className="flex size-full flex-col items-center justify-center space-y-4">
 					{/* Raniza */}
-					<div className="flex size-full flex-col items-center justify-start max-lg:space-y-4 lg:flex-row lg:justify-center">
+					<div className="flex size-full flex-col items-center justify-start max-lg:space-y-2 lg:flex-row lg:justify-center">
 						{/* Raniza: Profile */}
 						<section className="w-full lg:w-1/2">
 							<Suspense>
@@ -38,7 +39,9 @@ export default function Raniza() {
 
 						{/* Raniza: Socials */}
 						<section className="flex size-full items-start justify-center lg:w-1/2 lg:items-center">
-							<Suspense></Suspense>
+							<Suspense>
+								<SocialMedia />
+							</Suspense>
 						</section>
 					</div>
 
