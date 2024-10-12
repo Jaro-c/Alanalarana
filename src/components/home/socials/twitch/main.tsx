@@ -15,7 +15,7 @@ export default async function Twitch() {
 
 	return (
 		<a href={social} target="_blank" rel="noopener">
-			<div className="button-style button-transition flex w-full items-center justify-between rounded-full p-4">
+			<div className="button-style button-transition flex w-full items-center justify-between rounded-full px-4 h-14">
 				<div className="flex select-none items-center justify-center space-x-2">
 					{/* Icon */}
 					<svg className="fill-secondary-200" width={24} height={24} role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
