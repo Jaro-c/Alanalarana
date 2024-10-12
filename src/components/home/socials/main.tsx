@@ -4,6 +4,7 @@ import { Suspense } from "react";
 const Twitch = dynamic(() => import("@/components/home/socials/twitch/main"));
 const YouTube = dynamic(() => import("@/components/home/socials/youtube/main"));
 const Instagram = dynamic(() => import("@/components/home/socials/instagram/main"));
+const Twitter = dynamic(() => import("@/components/home/socials/x/main"));
 
 export default function Social_Media() {
 	const social_style = "w-full button-transition hover:my-2 hover:scale-105";
@@ -22,6 +23,13 @@ export default function Social_Media() {
 				<li className={`${social_style} hover:my-3`}>
 					<Suspense>
 						<YouTube />
+					</Suspense>
+				</li>
+
+				{/* X or Twitter */}
+				<li className={social_style}>
+					<Suspense>
+						<Twitter username={process.env.API_X_Username as string} social={process.env.Social_X as string} />
 					</Suspense>
 				</li>
 
