@@ -20,6 +20,10 @@ async function getTwitchToken() {
 }
 
 export async function isChannelLive() {
+	if (!ClientID || !ClientSecret) {
+		return { status: false };
+	}
+
 	try {
 		const accessToken = await getTwitchToken();
 		if (!accessToken) {
@@ -55,6 +59,10 @@ async function ChannelFollowers(accessToken: string) {
 }
 
 export async function ChannelData() {
+	if (!ClientID || !ClientSecret) {
+		return { status: false };
+	}
+
 	try {
 		const accessToken = await getTwitchToken();
 		if (!accessToken) {
