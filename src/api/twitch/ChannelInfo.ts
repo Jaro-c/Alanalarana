@@ -29,7 +29,7 @@ export async function isChannelLive() {
 		const response = await fetch("https://api.twitch.tv/helix/streams?user_id=" + ChannelID, {
 			method: "GET",
 			headers: { "Client-ID": ClientID, Authorization: "Bearer " + accessToken },
-			next: { revalidate: 5 * 60 }, // 5 minutes
+			next: { revalidate: 2 * 60 }, // 2 minutes
 		});
 
 		const data = await response.json();
