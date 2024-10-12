@@ -20,6 +20,10 @@ async function getTwitchToken() {
 }
 
 export async function isChannelLive() {
+	if (!ClientID || !ClientSecret) {
+		return { status: false };
+	}
+
 	try {
 		const accessToken = await getTwitchToken();
 		if (!accessToken) {
@@ -29,7 +33,7 @@ export async function isChannelLive() {
 		const response = await fetch("https://api.twitch.tv/helix/streams?user_id=" + ChannelID, {
 			method: "GET",
 			headers: { "Client-ID": ClientID, Authorization: "Bearer " + accessToken },
-			next: { revalidate: 5 * 60 }, // 5 minutes
+			next: { revalidate: 2 * 60 }, // 2 minutes
 		});
 
 		const data = await response.json();
@@ -55,6 +59,10 @@ async function ChannelFollowers(accessToken: string) {
 }
 
 export async function ChannelData() {
+	if (!ClientID || !ClientSecret) {
+		return { status: false };
+	}
+
 	try {
 		const accessToken = await getTwitchToken();
 		if (!accessToken) {

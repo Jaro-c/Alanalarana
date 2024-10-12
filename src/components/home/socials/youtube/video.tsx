@@ -30,7 +30,7 @@ export default function Video({ id, title, image, newVideo }: VideoProps) {
 				</div>
 
 				{newVideo && (
-					<div className="absolute bottom-4 right-4 animate-pulse rounded-full bg-red px-2 py-0.5">
+					<div className="absolute bottom-4 right-4 animate-pulse rounded-full bg-red px-3 py-0.5">
 						<span className="select-none text-xs font-medium text-secondary-200 lg:text-sm">Nuevo</span>
 					</div>
 				)}

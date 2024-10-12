@@ -4,6 +4,10 @@ const API_KEY = process.env.API_YT_Key as string;
 const ChannelID = process.env.API_YT_ChannelID as string;
 
 export default async function ChannelInfo() {
+	if (!API_KEY) {
+		return { status: false };
+	}
+
 	const Url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ChannelID}&key=${API_KEY}`;
 
 	try {

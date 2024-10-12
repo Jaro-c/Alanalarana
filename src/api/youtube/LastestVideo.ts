@@ -24,6 +24,10 @@ let cacheExpirationTime = 0;
 	Main function to fetch the latest video
 */
 export default async function LastestVideo() {
+	if (!API_KEY) {
+		return { status: false };
+	}
+
 	if (isCacheValid()) {
 		return { status: true, cache: true, data: cachedVideo };
 	}
