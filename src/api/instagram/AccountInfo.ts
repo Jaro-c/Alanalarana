@@ -3,6 +3,10 @@
 const ClientKey = process.env.API_IG_Key as string;
 
 export default async function AccountInfo(username: string) {
+	if (!ClientKey) {
+		return { status: false };
+	}
+
 	try {
 		const response = await fetch("https://instagram-scraper-api2.p.rapidapi.com/v1/info?username_or_id_or_url=" + username, {
 			method: "GET",
@@ -11,7 +15,7 @@ export default async function AccountInfo(username: string) {
 		});
 
 		const data = await response.json();
-		return { status: true, data: data.data };
+		return { status: !!data.data, data: data.data };
 	} catch {
 		return { status: false };
 	}
