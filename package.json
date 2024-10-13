@@ -4,17 +4,15 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev -p 3150",
-		"build": "npm run partytown && next build",
-		"partytown": "partytown copylib public/~partytown",
+		"build": "next build",
 		"start": "next start -p 3150",
 		"lint": "eslint . --ext .ts,.tsx,.js,.jsx",
 		"lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
 		"format": "prettier --check .",
 		"format:fix": "prettier --write .",
-		"lint-and-format": "npm run lint && npm run format:fix"
+		"lint-and-format": "pnpm run lint && pnpm run format:fix"
 	},
 	"dependencies": {
-		"@builder.io/partytown": "^0.10.2",
 		"lucide-react": "^0.452.0",
 		"millify": "^6.1.0",
 		"next": "^14.2.15",
@@ -25,7 +23,7 @@
 	"devDependencies": {
 		"@types/node": "^22.7.5",
 		"@types/react": "^18.3.11",
-		"@types/react-dom": "^18.3.0",
+		"@types/react-dom": "^18.3.1",
 		"@typescript-eslint/eslint-plugin": "^8.8.1",
 		"@typescript-eslint/parser": "^8.8.1",
 		"eslint": "^8.57.1",

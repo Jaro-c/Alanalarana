@@ -12,10 +12,10 @@ export function middleware(request: NextRequest) {
 	const nonce = generateNonce();
 	const cspHeader = `
 		default-src 'self';
-		connect-src 'self';
-		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com;
+		connect-src 'self' https://www.google-analytics.com;
+		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
 		script-src-attr 'self' 'nonce-${nonce}';
-		script-src-elem 'self' 'unsafe-inline';
+		script-src-elem 'self' 'nonce-${nonce}' 'unsafe-inline';
 		style-src 'self' 'nonce-${nonce}';
 		style-src-elem 'self' 'nonce-${nonce}';
 		style-src-attr 'self' 'unsafe-inline';
