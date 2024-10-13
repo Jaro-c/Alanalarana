@@ -1,5 +1,5 @@
-import { Partytown } from "@builder.io/partytown/react";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -48,21 +48,22 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400
 import "./globals.css";
 
 export default function Root_Layout({ children }: Readonly<{ children: React.ReactNode }>) {
+	const nonce = headers().get("x-nonce") as string;
+
 	return (
 		<html lang="es">
 			<head>
-				<Partytown debug={process.env.NODE_ENV === "development"} forward={["dataLayer.push"]} />
-				<Script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-G3N793GHZB" strategy="worker" />
+				<Script nonce={nonce} strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-G3N793GHZB" />
 				<Script
 					id="gtag-init"
-					type="text/partytown"
-					strategy="worker"
+					nonce={nonce}
+					strategy="lazyOnload"
 					dangerouslySetInnerHTML={{
 						__html: `
-							window.dataLayer = window.dataLayer || [];
-							function gtag(){dataLayer.push(arguments);}
-							gtag('js', new Date());
-							gtag('config', 'G-G3N793GHZB');
+						window.dataLayer = window.dataLayer || [];
+      					function gtag(){dataLayer.push(arguments);}
+      					gtag('js', new Date());
+      					gtag('config', 'G-G3N793GHZB');
 					`,
 					}}
 				/>
