@@ -1,3 +1,4 @@
+import { Partytown } from "@builder.io/partytown/react";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Script from "next/script";
@@ -53,17 +54,20 @@ export default function Root_Layout({ children }: Readonly<{ children: React.Rea
 	return (
 		<html lang="es">
 			<head>
-				<Script nonce={nonce} strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-G3N793GHZB" />
+				<Partytown debug={process.env.NODE_ENV === "development"} nonce={nonce} forward={["dataLayer.push"]} />
+
+				<Script nonce={nonce} id="google-analytics-first-script" type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-G3N793GHZB" />
 				<Script
-					id="gtag-init"
 					nonce={nonce}
-					strategy="lazyOnload"
+					id="google-analytics-second-script"
+					type="text/partytown"
 					dangerouslySetInnerHTML={{
 						__html: `
-						window.dataLayer = window.dataLayer || [];
-      					function gtag(){dataLayer.push(arguments);}
-      					gtag('js', new Date());
-      					gtag('config', 'G-G3N793GHZB');
+							window.dataLayer = window.dataLayer || [];
+							window.gtag = function gtag(){window.dataLayer.push(arguments);}
+							gtag('js', new Date());
+
+							gtag('config', 'G-G3N793GHZB', { page_path: window.location.pathname });
 					`,
 					}}
 				/>
