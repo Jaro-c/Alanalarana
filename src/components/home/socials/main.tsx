@@ -5,6 +5,7 @@ const Twitch = dynamic(() => import("@/components/home/socials/twitch/main"));
 const YouTube = dynamic(() => import("@/components/home/socials/youtube/main"));
 const Instagram = dynamic(() => import("@/components/home/socials/instagram/main"));
 const Twitter = dynamic(() => import("@/components/home/socials/x/main"));
+const TikTok = dynamic(() => import("@/components/home/socials/tiktok/main"));
 
 export default function Social_Media() {
 	const social_style = "w-full button-transition hover:my-2 hover:scale-105";
@@ -37,6 +38,13 @@ export default function Social_Media() {
 				<li className={social_style}>
 					<Suspense>
 						<Instagram username={process.env.API_IG_Username as string} social={process.env.Social_Instagram as string} />
+					</Suspense>
+				</li>
+
+				{/* TikTok */}
+				<li className={social_style}>
+					<Suspense>
+						<TikTok user_id={process.env.API_TK_UserID as string} social={process.env.Social_TikTok as string} />
 					</Suspense>
 				</li>
 			</ul>
