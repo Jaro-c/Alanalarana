@@ -1,5 +1,7 @@
-/* SEO */
+import { Partytown } from "@builder.io/partytown/react";
 import type { Metadata } from "next";
+import Script from "next/script";
+
 export const metadata: Metadata = {
 	metadataBase: new URL(process.env.MD_URL as string),
 	title: {
@@ -48,6 +50,24 @@ import "./globals.css";
 export default function Root_Layout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="es">
+			<head>
+				<Partytown debug={process.env.NODE_ENV === "development"} forward={["dataLayer.push"]} />
+				<Script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-G3N793GHZB" strategy="worker" />
+				<Script
+					id="gtag-init"
+					type="text/partytown"
+					strategy="worker"
+					dangerouslySetInnerHTML={{
+						__html: `
+							window.dataLayer = window.dataLayer || [];
+							function gtag(){dataLayer.push(arguments);}
+							gtag('js', new Date());
+							gtag('config', 'G-G3N793GHZB');
+					`,
+					}}
+				/>
+			</head>
+
 			<body className={`${poppins.className} antialiased`}>
 				<main className="flex min-h-screen max-w-screen-4xl">
 					<div className="w-full grow">{children}</div>

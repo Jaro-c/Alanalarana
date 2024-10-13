@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
 	const cspHeader = `
 		default-src 'self';
 		connect-src 'self';
-		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
+		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com;
 		script-src-attr 'self' 'nonce-${nonce}';
 		script-src-elem 'self' 'unsafe-inline';
 		style-src 'self' 'nonce-${nonce}';
@@ -42,6 +42,7 @@ export function middleware(request: NextRequest) {
 	response.headers.set("Referrer-Policy", "no-referrer");
 
 	response.headers.set("Cross-Origin-Resource-Policy", "same-origin");
+	response.headers.set("Cross-Origin-Embedder-Policy", "require-corp");
 	response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
 	response.headers.set("X-Download-Options", "noopen");
 	response.headers.set("X-Permitted-Cross-Domain-Policies", "none");

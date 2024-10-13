@@ -20,7 +20,7 @@ export default function Social_Media() {
 				</li>
 
 				{/* YouTube */}
-				<li className={`${social_style} hover:my-3`}>
+				<li className={`${social_style} hover:my-4`}>
 					<Suspense>
 						<YouTube />
 					</Suspense>
