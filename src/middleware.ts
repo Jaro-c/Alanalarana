@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
 	const nonce = generateNonce();
 	const cspHeader = `
 		default-src 'self';
-		connect-src 'self' https://www.google-analytics.com;
+		connect-src 'self' https://www.googletagmanager.com;
 		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
 		script-src-attr 'self' 'nonce-${nonce}';
 		script-src-elem 'self' 'nonce-${nonce}' 'unsafe-inline';
@@ -25,6 +25,7 @@ export function middleware(request: NextRequest) {
 		base-uri 'self';
 		form-action 'self';
 		frame-ancestors 'none';
+		worker-src 'self' blob:;
 		upgrade-insecure-requests;`;
 	const ContentSecurityPolicy = cspHeader.replace(/\s{2,}/g, " ").trim();
 
