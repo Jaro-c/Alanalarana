@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 import VideoInfo from "@/api/youtube/LastestVideo";
 
-const Video = dynamic(() => import("./video"), { ssr: false });
+const Video = dynamic(() => import("./video"));
 
 export default async function YT_Video() {
 	const data = await VideoInfo();

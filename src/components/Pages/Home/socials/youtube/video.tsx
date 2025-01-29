@@ -15,7 +15,7 @@ export default function Video({ id, title, image, newVideo }: VideoProps) {
 			<span className="select-none truncate text-sm text-secondary-200/80 lg:text-base">{title}</span>
 
 			<div className="relative">
-				<Image className="no-select h-auto w-full rounded-lg" src={image} alt={title} width={400} height={400} />
+				<Image className="h-auto w-full select-none rounded-lg" src={image} alt={title} width={400} height={400} />
 
 				<div className="absolute inset-0 flex items-center justify-center">
 					<svg
