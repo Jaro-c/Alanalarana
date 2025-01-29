@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 		canonical: "/",
 	},
 	category: "Creador de Contenido",
+	assets: "/assets",
 	openGraph: {
 		title: {
 			template: "%s | " + process.env.MD_Title,
@@ -24,6 +25,31 @@ export const metadata: Metadata = {
 		siteName: process.env.MD_Title,
 		locale: "es",
 		type: "website",
+		images: [
+			{
+				url: process.env.MD_URL + "/assets/og-banner.webp",
+				width: 1500,
+				height: 500,
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: {
+			template: "%s | " + process.env.MD_Title,
+			default: process.env.MD_Title as string,
+		},
+		description: process.env.MD_Description,
+		images: [process.env.MD_URL + "/assets/og-banner.webp"],
+		site: "@" + process.env.API_X_Username,
+	},
+	icons: {
+		icon: "/favicon.ico",
+		apple: "/assets/icons/apple-touch-icon.png",
+		other: {
+			rel: "apple-touch-icon-precomposed",
+			url: "/assets/icons/apple-touch-icon.png",
+		},
 	},
 	robots: {
 		index: true,
