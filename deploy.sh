@@ -16,6 +16,10 @@ if git diff --quiet HEAD origin/main; then
     exit 0
 fi
 
+echo "🔄 Restaurando código al último estado de main..."
+git reset --hard origin/main
+git clean -fd
+
 echo "🚀 Descargando los últimos cambios..."
 git pull origin main || { echo "❌ Error al actualizar el repositorio"; exit 1; }
 
