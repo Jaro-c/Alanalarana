@@ -1,7 +1,7 @@
 .background-section {
 	position: relative;
 	background-color: #000;
-	background-image: url("/raniza/background.webp");
+	background-image: url("/assets/pages/raniza/background.webp");
 	background-size: cover;
 	background-position: top center;
 	background-repeat: no-repeat;

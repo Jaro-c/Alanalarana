@@ -6,11 +6,11 @@
 
 Mark with an `x` the type of change that applies to this pull request:
 
--   [ ] Bugfix (fixing an issue)
--   [ ] Feature (new functionality)
--   [ ] Refactor (code change that neither fixes a bug nor adds a feature)
--   [ ] Documentation
--   [ ] Other (please specify):
+- [ ] Bugfix (fixing an issue)
+- [ ] Feature (new functionality)
+- [ ] Refactor (code change that neither fixes a bug nor adds a feature)
+- [ ] Documentation
+- [ ] Other (please specify):
 
 ## How has this been tested?
 
@@ -26,15 +26,15 @@ Mark with an `x` the type of change that applies to this pull request:
 
 Ensure your pull request adheres to the following:
 
--   [ ] I have reviewed my code and removed any unnecessary comments or code.
--   [ ] I have documented any relevant changes in the project's documentation (if necessary).
--   [ ] Existing tests pass without failures after this change.
--   [ ] This pull request is related to a task or issue (if applicable).
+- [ ] I have reviewed my code and removed any unnecessary comments or code.
+- [ ] I have documented any relevant changes in the project's documentation (if necessary).
+- [ ] Existing tests pass without failures after this change.
+- [ ] This pull request is related to a task or issue (if applicable).
 
 ## Does this pull request introduce a breaking change?
 
--   [ ] Yes
--   [ ] No
+- [ ] Yes
+- [ ] No
 
 <!-- If yes, describe the impact and how it can be mitigated. -->
 

@@ -2,27 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.no-select {
-	user-select: none;
-	-webkit-user-select: none; /* Safari */
-	-ms-user-select: none; /* Edge */
-	-webkit-user-drag: none;
-	-moz-user-select: none; /* Firefox */
-}
-
 .no-scrollbar {
-	/* scrollbar-width: none;
+	scrollbar-width: none;
 	scroll-behavior: smooth;
-	overflow-y: auto; */
+	overflow-y: auto;
 }
 
 .no-scrollbar::-webkit-scrollbar {
-	/* width: 0;
-	transition: width 0.3s ease-in-out; */
+	width: 0;
+	transition: width 0.3s ease-in-out;
 }
 
 .no-scrollbar:hover {
-	/* scrollbar-width: thin; */
+	scrollbar-width: thin;
 }
 
 .button-style {
