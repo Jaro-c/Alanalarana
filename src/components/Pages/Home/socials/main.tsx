@@ -3,8 +3,8 @@ import { Suspense } from "react";
 
 const Twitch = dynamic(() => import("@/components/Pages/Home/socials/twitch/main"));
 const YouTube = dynamic(() => import("@/components/Pages/Home/socials/youtube/main"));
-const Instagram = dynamic(() => import("@/components/Pages/Home/socials/instagram/main"));
 const Twitter = dynamic(() => import("@/components/Pages/Home/socials/x/main"));
+const Instagram = dynamic(() => import("@/components/Pages/Home/socials/instagram/main"));
 const TikTok = dynamic(() => import("@/components/Pages/Home/socials/tiktok/main"));
 
 export default function Social_Media() {
@@ -32,7 +32,9 @@ export default function Social_Media() {
 
 				{/* X or Twitter */}
 				<li className={social_style}>
-					<Suspense>{/* <Twitter username={process.env.API_X_Username as string} social={process.env.Social_X as string} /> */}</Suspense>
+					<Suspense fallback={<div className={social_skeleton}></div>}>
+						<Twitter username={process.env.API_X_Username as string} social={process.env.Social_X as string} />
+					</Suspense>
 				</li>
 
 				{/* Instagram */}
