@@ -1,4 +1,4 @@
-import { isChannelLive } from "@/api/twitch/ChannelInfo";
+import { isChannelLive } from "@/services/twitch/ChannelInfo";
 
 export default async function Stream() {
 	const data = await isChannelLive();
