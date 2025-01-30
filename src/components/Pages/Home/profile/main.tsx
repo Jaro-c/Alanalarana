@@ -19,14 +19,7 @@ export default function Profile() {
 
 					<Link href="/raniza" className="group absolute -right-24 lg:-right-28">
 						<div className="button-transition rounded-full group-hover:scale-105 group-hover:shadow-[0px_0px_15px_1px_#09de79]">
-							<Image
-								className="h-auto w-16 select-none rounded-full lg:w-20"
-								src={"/assets/pages/raniza/profile.webp"}
-								width={100}
-								height={100}
-								priority
-								alt={Title_Raniza + " - Logo"}
-							/>
+							<Image className="size-16 select-none rounded-full lg:size-20" src={"/assets/pages/raniza/profile.webp"} width={100} height={100} priority alt={Title_Raniza + " - Logo"} />
 						</div>
 					</Link>
 				</div>
