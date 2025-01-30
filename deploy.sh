@@ -1,39 +1,41 @@
 #!/bin/bash
 
-# Navigate to the project directory
-cd ~/WWW/Alanalarana.com
+# Ruta del proyecto
+PROJECT_DIR=~/WWW/Alanalarana.com
+APP_NAME="Alanalarana.com"
 
-# Discard all local uncommitted changes
-git clean -fd
+# Entrar en la carpeta del proyecto
+cd "$PROJECT_DIR" || { echo "❌ No se pudo acceder a $PROJECT_DIR"; exit 1; }
 
-# Pull the latest changes and store the output in a variable
-output=$(git pull origin main)
+echo "📡 Buscando cambios en el repositorio..."
+git fetch origin main
 
-# Check if there are new changes
-if [[ $output == *"Already up to date."* ]]; then
-        echo "No new changes. Skipping deployment."
-        exit 0
+# Verificar si hay cambios antes de hacer pull
+if git diff --quiet HEAD origin/main; then
+    echo "✅ No hay actualizaciones disponibles."
+    exit 0
 fi
 
-# If package.json changed since the last pull, update dependencies
-if git diff --name-only HEAD@{1} HEAD | grep "package.json" > /dev/null 2>&1; then
-        echo "Removing node_modules..."
-        rm -rf node_modules
+echo "🚀 Descargando los últimos cambios..."
+git pull origin main || { echo "❌ Error al actualizar el repositorio"; exit 1; }
 
-        echo "Changes detected in package.json, updating dependencies..."
-        echo "y" | pnpm install
+echo "🛑 Apagando la aplicación..."
+pm2 stop "$APP_NAME" || echo "⚠️ La aplicación no estaba en ejecución."
 
-        echo "Removing the .next folder due to package.json changes..."
-        rm -rf .next
+# Si package.json cambió, actualizar dependencias
+if git diff --name-only HEAD@{1} HEAD | grep -q "package.json" || git diff --name-only origin/main HEAD | grep -q "package.json"; then
+    echo "📦 Cambios en package.json detectados, reinstalando dependencias..."
+    rm -rf node_modules .next
+    pnpm install || { echo "❌ Error al instalar dependencias"; exit 1; }
 fi
 
-# Build the project (necessary for projects like Next.js)
-echo "Building the project..."
+echo "🏗️ Construyendo el proyecto..."
 if ! pnpm run build; then
-    echo "Build failed. Aborting deployment."
-    exit 1  # Exit with error to prevent app restart
+    echo "❌ Falló la compilación. Deteniendo el despliegue."
+    exit 1
 fi
 
-# Restart the application (using PM2, Docker, etc.)
-echo "Restarting the application..."
-pm2 restart Alanalarana.com
+echo "🔄 Iniciando la aplicación..."
+pm2 restart "$APP_NAME" || { echo "❌ Error al reiniciar la aplicación"; exit 1; }
+
+echo "✅ Despliegue completado con éxito."
