@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 			default: process.env.MD_Title as string,
 		},
 		description: process.env.MD_Description,
-		url: process.env.MD_URL,
+		url: "/",
 		siteName: process.env.MD_Title,
 		locale: "es",
 		type: "website",
