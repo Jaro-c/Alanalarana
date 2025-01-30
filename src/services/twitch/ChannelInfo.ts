@@ -4,7 +4,18 @@ const ClientID = process.env.API_T_ClientID as string;
 const ClientSecret = process.env.API_T_ClientSecret as string;
 const ChannelID = process.env.API_T_ChannelID as string;
 
+interface TwitchToken {
+	token: string;
+	expires: number;
+}
+
+let save_token: TwitchToken | null = null;
+
 async function getTwitchToken() {
+	if (save_token && save_token.expires > Date.now()) {
+		return save_token.token;
+	}
+
 	try {
 		const response = await fetch("https://id.twitch.tv/oauth2/token", {
 			method: "POST",
@@ -19,6 +30,12 @@ async function getTwitchToken() {
 		});
 
 		const data = await response.json();
+
+		save_token = {
+			token: data.access_token,
+			expires: Date.now() + data.expires_in * 1000,
+		};
+
 		return data.access_token;
 	} catch {
 		return false;
