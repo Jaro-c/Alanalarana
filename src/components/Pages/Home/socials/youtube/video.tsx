@@ -11,11 +11,11 @@ interface VideoProps {
 
 export default function Video({ id, title, image, newVideo }: VideoProps) {
 	return (
-		<div onClick={() => window.open("https://youtu.be/" + id, "_blank", "noopener")} className="group flex w-full flex-col space-y-2">
+		<div onClick={() => window.open("https://youtu.be/" + id, "_blank", "noopener")} className="group flex w-full flex-col gap-2">
 			<span className="select-none truncate text-sm text-secondary-200/80 lg:text-base">{title}</span>
 
-			<div className="relative">
-				<Image className="h-auto w-full select-none rounded-lg" src={image} alt={title} width={400} height={400} />
+			<div className="relative aspect-video max-w-full">
+				<Image className="absolute inset-0 max-h-full w-full select-none rounded-lg object-contain" src={image} alt={title} priority width={400} height={400} />
 
 				<div className="absolute inset-0 flex items-center justify-center">
 					<svg

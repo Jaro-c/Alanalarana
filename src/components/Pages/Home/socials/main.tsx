@@ -25,7 +25,9 @@ export default function Social_Media() {
 
 				{/* YouTube */}
 				<li className={`${social_style} hover:my-4`}>
-					<Suspense>{/* <YouTube /> */}</Suspense>
+					<Suspense fallback={<div className={social_skeleton}></div>}>
+						<YouTube />
+					</Suspense>
 				</li>
 
 				{/* X or Twitter */}

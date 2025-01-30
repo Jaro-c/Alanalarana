@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-import VideoInfo from "@/api/youtube/LastestVideo";
+import VideoInfo from "@/services/youtube/LastestVideo";
 
 const Video = dynamic(() => import("./video"));
 
