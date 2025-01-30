@@ -46,7 +46,9 @@ export default function Social_Media() {
 
 				{/* TikTok */}
 				<li className={social_style}>
-					<Suspense>{/* <TikTok user_id={process.env.API_TK_UserID as string} social={process.env.Social_TikTok as string} /> */}</Suspense>
+					<Suspense fallback={<div className={social_skeleton}></div>}>
+						<TikTok user_id={process.env.API_TK_UserID as string} social={process.env.Social_TikTok as string} />
+					</Suspense>
 				</li>
 			</ul>
 		</nav>
