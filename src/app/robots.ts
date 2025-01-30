@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
 		rules: {
 			userAgent: "*",
 			allow: "/",
-			disallow: [],
+			disallow: ["/_next"],
 		},
 		sitemap: process.env.MD_URL + "/sitemap.xml",
 	};

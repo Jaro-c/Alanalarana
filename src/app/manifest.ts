@@ -6,23 +6,18 @@ export default function manifest(): MetadataRoute.Manifest {
 		short_name: process.env.MD_Short_Title,
 		description: process.env.MD_Description,
 		start_url: "/",
-		display: "fullscreen",
+		display: "standalone",
 		background_color: "#fff",
 		theme_color: "#fff",
 		icons: [
 			{
 				src: "/favicon.ico",
-				sizes: "48x48",
+				sizes: "256x256",
 				type: "image/x-icon",
 			},
 			{
-				src: "/android-chrome-192x192.png",
-				sizes: "192x192",
-				type: "image/png",
-			},
-			{
-				src: "/android-chrome-512x512.png",
-				sizes: "512x512",
+				src: "/assets/icons/apple-touch-icon.png",
+				sizes: "180x180",
 				type: "image/png",
 			},
 		],
