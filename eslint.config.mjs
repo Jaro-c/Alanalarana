@@ -20,7 +20,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
 	{
-		ignores: ["**/~partytown/", "**/pnpm-lock.yaml", "**/node_modules/", "**/.next/", "**/ecosystem.config.js"],
+		ignores: ["**/pnpm-lock.yaml", "**/node_modules/", "**/.next/"],
 	},
 	...compat.extends("next/core-web-vitals", "next/typescript", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"),
 	{
